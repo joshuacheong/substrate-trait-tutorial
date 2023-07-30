@@ -61,19 +61,19 @@ fn test_step_3() {
     assert!(voting.get_vote(2, 1) == false);
 }
 
-// // Account ID in step 2 and step 3 are defined differently!
-// fn wont_work() {
-//     let user_1 = 1;
-//     let user_2 = 2;
-//     let mut balances = step2::BalancesModule::new();
-//     let mut voting = step3::VotingModule::new();
+// Account ID in step 2 and step 3 are defined differently!
+fn wont_work() {
+    let user_1 = 1;
+    let user_2 = 2;
+    let mut balances = step2::BalancesModule::new();
+    let mut voting = step3::VotingModule::new();
 
-//     balances.set_balance(user_1, 100);
-//     balances.set_balance(user_2, 200);
+    balances.set_balance(user_1, 100);
+    balances.set_balance(user_2, 200);
 
-//     voting.vote(user_1, 0, true);
-//     voting.vote(user_2, 0, false);
-// }
+    voting.vote(user_1, 0, true);
+    voting.vote(user_2, 0, false);
+}
 
 #[test]
 fn test_step_4() {
@@ -94,9 +94,9 @@ fn test_step_4() {
     voting.vote(user_2, 0, false);
 }
 
+use num::traits::{CheckedAdd, CheckedSub, Zero};
 use std::cmp::Eq;
 use std::hash::Hash;
-use num::traits::{CheckedAdd, CheckedSub, Zero};
 
 pub trait Trait {
     type AccountId: Eq + Hash;
@@ -106,7 +106,6 @@ pub trait Trait {
 
 #[test]
 fn test_step_5() {
-
     struct Runtime;
     impl Trait for Runtime {
         type AccountId = u32;
